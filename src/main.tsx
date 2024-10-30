@@ -7,6 +7,8 @@ import App from "./App";
 
 import Home from "./pages_cpnts/Home";
 import About from "./pages_cpnts/About";
+import Article from "./pages_cpnts/Article";
+
 
 // router creation
 
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/articles/:id",
+        element: <Article />,
       },
     ],
   },
