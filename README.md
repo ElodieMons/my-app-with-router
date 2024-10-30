@@ -1,4 +1,6 @@
-# Pourquoi React Router
+# Pourquoi React Router?
+
+Routes statiques et routes dynamiques
 <!-- Commence par créer un “bac à sable” React/JavaScript pour faire quelques expériences (choisis bien React et TypeScript à la création du projet) :
 
 npm create vite@latest my-app-with-router
@@ -162,9 +164,9 @@ if (rootElement != null) {
 }
 Ce code illustre l’utilisation de React Router pour configurer des routes dans une application React.
 
-Voici ce qui se passe dans ce code :
+Voici ce qui se passe dans ce code : -->
 
-Nous importons les modules nécessaires depuis React et React Router.
+<!-- Nous importons les modules nécessaires depuis React et React Router.
 Nous utilisons createBrowserRouter pour créer une instance de routeur. Nous lui passons un tableau d’objets, chaque objet représentant l’association d’un affichage spécifique (element) avec un chemin d’URL particulier (path). Dans notre exemple, il existe deux routes "/" et "/about" :
 /* ... */
 {
@@ -325,16 +327,17 @@ L’élément <Outlet /> va automatiquement être remplacé grâce à React Rout
 
 <Home />pour"/"
 <About />pour"/about"
-Le même résultat qu’à l’origine, mais c’est React Router qui fait le travail 😉
+Le même résultat qu’à l’origine, mais c’est React Router qui fait le travail 😉 -->
 
-Nous avons ici “recyclé” App pour en faire un layout : une mise en page réutilisable par différentes routes. Une application plus complexe pourrait gérer différent layouts pour différentes sections d’un site par exemple. Mais nous allons nous en tenir dans cet atelier à un layout unique.
+<!-- Nous avons ici “recyclé” App pour en faire un layout : une mise en page réutilisable par différentes routes. Une application plus complexe pourrait gérer différents layouts pour différentes sections d’un site par exemple. Mais nous allons nous en tenir dans cet atelier à un layout unique.
 
-Plus de pages
-Jusqu’à présent, nous avons vu comment configurer des routes statiques pour des pages comme "/" et "/about". Cependant, dans de nombreuses applications, les URL contiennent des informations dynamiques, comme des identifiants d’utilisateurs, des noms de produits ou d’autres données variables. Pour gérer ces cas, React Router nous offre une fonctionnalité appelée “segment dynamique”.
+Plus de pages -->
+<!-- Jusqu’à présent, nous avons vu comment configurer des routes statiques pour des pages comme "/" et "/about".  -->
+Dans de nombreuses applications, les URL contiennent des informations dynamiques, comme des identifiants d’utilisateurs, des noms de produits ou d’autres données variables. Pour gérer ces cas, React Router nous offre une fonctionnalité appelée “segment dynamique”.
 
 Les segments dynamiques nous permettent de créer des routes flexibles qui acceptent des valeurs variables dans l’URL, ce qui rend notre application capable de traiter une grande variété de cas d’utilisation.
 
-Prenons un exemple concret pour comprendre comment fonctionnent les segments dynamiques. Imaginons que nous ayons une application de blog et que nous souhaitions afficher les détails de chaque article en fonction de son identifiant. Plutôt que de créer une route statique pour chaque article, nous pouvons utiliser un segment dynamique pour capturer l’identifiant de l’article directement depuis l’URL.
+<!-- Prenons un exemple concret pour comprendre comment fonctionnent les segments dynamiques. Imaginons que nous ayons une application de blog et que nous souhaitions afficher les détails de chaque article en fonction de son identifiant. Plutôt que de créer une route statique pour chaque article, nous pouvons utiliser un segment dynamique pour capturer l’identifiant de l’article directement depuis l’URL.
 
 Pense à faire un commit de tes dernières modifs avant de changer ton code.
 
@@ -384,10 +387,10 @@ function Article() {
   return <h1>Hello from Article {id}</h1>;
 }
 
-export default Article;
-Le rôle de useParams est de nous retourner toutes les valeurs des segments dynamiques depuis l’URL. Toutes les valeurs : même s’il n’y en a qu’une (c’est notre cas ici), useParams() nous renverra toujours un objet avec chaque valeur associée à son nom.
+export default Article; -->
+Le rôle de useParams est de nous retourner toutes les valeurs des segments dynamiques depuis l’URL. Toutes les valeurs : même s’il n’y en a qu’une (cas ici), useParams() nous renverra toujours un objet avec chaque valeur associée à son nom.
 
-Nous aurions pu écrire :
+<!-- Nous aurions pu écrire :
 
 const allValuesForTheDynamicSegments = useParams();
 const id = allValuesForTheDynamicSegments.id;
@@ -467,3 +470,30 @@ function App() {
 
 export default App;
 Tu peux maintenant tester tes nouvelles pages, et faire tes propres expériences avec des segments dynamiques. -->
+
+
+useEffect
+
+- Avantages :
+
+Flexibilité : useEffect permet de réagir à divers types de changements, tels que les modifications d’état ou les mises à jour de props.
+Contrôle total : Vous avez un contrôle total sur les actions effectuées en réponse aux changements.
+
+- Inconvénients :
+
+Difficulté à gérer le chargement initial : Pour gérer le chargement initial de manière efficace, des rendus conditionnels ou des états spéciaux sont souvent nécessaires.
+Peut entraîner des rendus inutiles : useEffect peut être déclenché plusieurs fois pour un même changement, ce qui peut provoquer des rendus inutiles.
+
+
+Loaders de React Router
+
+- Avantages :
+
+Préchargement des données : Les loaders de React Router permettent de précharger les données avant le rendu, améliorant ainsi les performances et l’expérience utilisateur.
+Gestion automatique du chargement initial : Les loaders sont déclenchés automatiquement lors de l’activation de la route, ce qui facilite la gestion du chargement initial.
+Structure claire : Les loaders sont associés aux routes correspondantes, ce qui rend la logique de chargement plus claire et structurée.
+
+- Inconvénients :
+
+Moins de flexibilité : Les loaders sont conçus pour le chargement de données lors du changement de route, ce qui les limite à ce contexte. Si vous avez besoin de réagir à des changements plus variés, useEffect peut être plus adapté.
+Le choix entre useEffect et les loaders dépend du cas d’utilisation spécifique.
